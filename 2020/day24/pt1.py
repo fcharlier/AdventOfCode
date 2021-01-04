@@ -34,7 +34,9 @@ def coords_from_path(tile_path):
 
 
 def main(filepath):
-    """
+    """Since we only need to count black tiles (tiles flipped an odd number of times),
+    I only store known tiles coordinates and count how many times they appear.
+    No need to actually build a grid here.
     >>> main("EXAMPLE")
     10
     """
