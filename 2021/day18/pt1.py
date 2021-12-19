@@ -134,6 +134,8 @@ def magnitude(line):
     1137
     >>> magnitude(read_input('mag6')[0])
     3488
+    >>> magnitude(doit(read_input('example')))
+    4140
     """
     maxdepth = max(depth for depth, value in line)
     next_items = [n for n, item in enumerate(line) if item[0] == maxdepth]
