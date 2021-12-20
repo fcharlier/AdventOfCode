@@ -70,72 +70,26 @@ def enhance(lights, algo):
 
 
 if __name__ == "__main__":
-    #### PART1
-    # lights, algo = read_input("input")
-    # for n in range(2):
-    #     lights = enhance(lights, algo)
-    # # Ahahahaha stupid *infinite* algo …
-    # minX, maxX, minY, maxY = 0, 0, 0, 0
-    # for light in lights:
-    #     minX = min(minX, light[1])
-    #     maxX = max(maxX, light[1])
-    #     minY = min(minX, light[0])
-    #     maxY = max(maxX, light[0])
-    #
-    # #
-    # # *khof* handle special case when pixels get lit when pixels around are dark, aka
-    # # the borders of the infinite
-    # #
-    # sublights = [
-    #     light
-    #     for light in lights
-    #     if minX + 3 < light[1] < maxX - 4 and minY + 3 < light[0] < maxY - 4
-    # ]
-    #
-    #
-    # # for Y in range(minY + 3, maxY - 4):
-    # #     for X in range(minX + 3, maxX - 4):
-    # #         if (X, Y) in sublights:
-    # #             print("#", end="")
-    # #         else:
-    # #             print(".", end="")
-    # #     print("")
-    #
-    # print(len(sublights))
-    #### PART1
-
-
-    ## Part 2
-
+    ### PART1
     lights, algo = read_input("input")
-    for n in range(50):
-        start = datetime.now()
+    for n in range(2):
         lights = enhance(lights, algo)
-        end = datetime.now()
-
-        start_r = datetime.now()
-        if n % 2:
-            print("Reducinc size, does it help ?")
-            minX, maxX, minY, maxY = 0, 0, 0, 0
-            for light in lights:
-                minX = min(minX, light[1])
-                maxX = max(maxX, light[1])
-                minY = min(minX, light[0])
-                maxY = max(maxX, light[0])
-            lights = [
-                light
-                for light in lights
-                if minX + 3 < light[1] < maxX - 4 and minY + 3 < light[0] < maxY - 4
-            ]
-        end_r = datetime.now()
-        print(f"Iteration {n}: {len(lights)}. Elapsed time: {end - start} - Reducing: {end_r - start_r}")
     # Ahahahaha stupid *infinite* algo …
+    minX, maxX, minY, maxY = 0, 0, 0, 0
+    for light in lights:
+        minX = min(minX, light[1])
+        maxX = max(maxX, light[1])
+        minY = min(minX, light[0])
+        maxY = max(maxX, light[0])
 
     #
     # *khof* handle special case when pixels get lit when pixels around are dark, aka
     # the borders of the infinite
     #
     sublights = [
+        light
+        for light in lights
+        if minX + 3 < light[1] < maxX - 4 and minY + 3 < light[0] < maxY - 4
     ]
 
 
@@ -148,3 +102,50 @@ if __name__ == "__main__":
     #     print("")
 
     print(len(sublights))
+    ### PART1
+
+
+    # ## Part 2
+    # # Works but very slow (1h10)
+    #
+    # lights, algo = read_input("input")
+    # for n in range(50):
+    #     start = datetime.now()
+    #     lights = enhance(lights, algo)
+    #     end = datetime.now()
+    #
+    #     start_r = datetime.now()
+    #     if n % 2:
+    #         print("Reducinc size, does it help ?")
+    #         minX, maxX, minY, maxY = 0, 0, 0, 0
+    #         for light in lights:
+    #             minX = min(minX, light[1])
+    #             maxX = max(maxX, light[1])
+    #             minY = min(minX, light[0])
+    #             maxY = max(maxX, light[0])
+    #         lights = [
+    #             light
+    #             for light in lights
+    #             if minX + 3 < light[1] < maxX - 4 and minY + 3 < light[0] < maxY - 4
+    #         ]
+    #     end_r = datetime.now()
+    #     print(f"Iteration {n}: {len(lights)}. Elapsed time: {end - start} - Reducing: {end_r - start_r}")
+    # # Ahahahaha stupid *infinite* algo …
+    #
+    # #
+    # # *khof* handle special case when pixels get lit when pixels around are dark, aka
+    # # the borders of the infinite
+    # #
+    # sublights = [
+    # ]
+    #
+    #
+    # # for Y in range(minY + 3, maxY - 4):
+    # #     for X in range(minX + 3, maxX - 4):
+    # #         if (X, Y) in sublights:
+    # #             print("#", end="")
+    # #         else:
+    # #             print(".", end="")
+    # #     print("")
+    #
+    # print(len(sublights))
