@@ -18,7 +18,8 @@ def read_input(filename):
 
 
 def visible(heightmap, row, col):
-    """Returns true if the tree at (row, col) is visible from either top, bottom, left or right.
+    """Returns true if the tree at (row, col) is visible from either top,
+    bottom, left or right.
     Trees on the borders are always visible.
     >>> heightmap = read_input("input_example")
     >>> visible(heightmap, 1, 1)
@@ -48,18 +49,14 @@ def visible(heightmap, row, col):
 
     fromleft = [heightmap[row][c] < heightmap[row][col] for c in range(col)]
     fromright = [
-        heightmap[row][c] < heightmap[row][col] for c in range(col + 1, len(heightmap[row]))
+        heightmap[row][c] < heightmap[row][col]
+        for c in range(col + 1, len(heightmap[row]))
     ]
     fromtop = [heightmap[r][col] < heightmap[row][col] for r in range(row)]
     frombottom = [
         heightmap[r][col] < heightmap[row][col] for r in range(row + 1, len(heightmap))
     ]
 
-    # print(f"{row},{col} <== {heightmap[row][col]}")
-    # print(f"from left: {fromleft}")
-    # print(f"from right: {fromright}")
-    # print(f"from top: {fromtop}")
-    # print(f"from bottom: {frombottom}")
     return all(fromleft) or all(fromright) or all(fromtop) or all(frombottom)
 
 
@@ -77,6 +74,6 @@ def count_visible(heightmap):
     return n
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     heightmap = read_input("input_real")
     print(count_visible(heightmap))
