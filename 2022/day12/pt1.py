@@ -2,7 +2,6 @@
 
 import numpy as np
 import numpy.ma as ma
-import pandas as pd
 
 
 def read_input(filename):
@@ -36,6 +35,7 @@ def shortest_path(heights):
 
     min_len = 32768
     while len(opn):
+        opn.sort(key=lambda x: cost[x], reverse=True)
         cur = opn.pop()
 
         if cur == end:
