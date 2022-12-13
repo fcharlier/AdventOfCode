@@ -33,13 +33,12 @@ def shortest_path(heights):
     cost.fill(ma.minimum_fill_value(cost))
     cost[start] = 0
 
-    min_len = 32768
     while len(opn):
         opn.sort(key=lambda x: cost[x], reverse=True)
         cur = opn.pop()
 
         if cur == end:
-            min_len = min(cost[end], min_len)
+            return cost[end]
         for dif in ((-1, 0), (1, 0), (0, 1), (0, -1)):
             neig = (cur[0] + dif[0], cur[1] + dif[1])
 
@@ -53,7 +52,7 @@ def shortest_path(heights):
                 opn.append(neig)
 
         closed.append(str(cur))
-    return min(min_len, ma.minimum_fill_value(cost))
+    return ma.minimum_fill_value(cost)
 
 
 if __name__ == "__main__":
