@@ -87,10 +87,13 @@ def count_no_beacon(sensors, line_no):
             if (x, y) == sensor["beacon"]:
                 is_beacon = True
                 break
-            if manhatan_distance((x, y), sensor["loc"]) <= sensor["range"]:
-                is_in_range = True
-        if not is_beacon and is_in_range:
-            no_beacon += 1
+        if not is_beacon:
+            for sensor in sensors:
+                if manhatan_distance((x, y), sensor["loc"]) <= sensor["range"]:
+                    is_in_range = True
+                    break
+            if is_in_range:
+                no_beacon += 1
 
     return no_beacon
 
